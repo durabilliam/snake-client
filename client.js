@@ -4,21 +4,17 @@ const net = require('net');
  * Establishes connection with the game server
  */
 const connect = function() {
-  const conn = net.createConnection({ 
+  const conn = net.createConnection({
     host: 'localhost',
     port: 50541
   });
   // interpret incoming data as text
-  conn.setEncoding('utf8'); 
+  conn.setEncoding('utf8');
 
   conn.on('connect', () => {
     conn.write('Name: BBP');
     console.log('Successfully connected to game server');
-    // conn.write("Move: up");
-    // conn.write("Move: up");
-    // conn.write("Move: up");
-    // conn.write("Move: up");
-    // conn.write("Move: up");
+    // Testing server movement commands
     // conn.write("Move: up");
     // setTimeout(() => {
     //   conn.write("Move: up");;
@@ -41,13 +37,13 @@ const connect = function() {
     //   conn.write("Move: Left");;
     // }, 1000);
   
-    })
+  });
 
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
 
   return conn;
-}
+};
 
 module.exports = connect;
